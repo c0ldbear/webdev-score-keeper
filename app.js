@@ -82,6 +82,7 @@ btnReset.addEventListener('click', () => {
 	selection.value = 0;
 	scoreLimit = defaultScore;
 	winner = false;
+	disableButtons(true);
 });
 
 const disableButtons = function(state) {
