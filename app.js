@@ -1,3 +1,18 @@
+const selection = document.querySelector('#roundSelect');
+const scores = document.querySelector('#scores');
+const btnReset = document.querySelector('#btnResetScore');
+
+const mehEmoij = document.createElement('i');
+mehEmoij.classList.add('far', 'fa-meh-blank');
+const sadEmoij = document.createElement('i');
+sadEmoij.classList.add('far', 'fa-sad-tear');
+const happyEmoij = document.createElement('i');
+happyEmoij.classList.add('far', 'fa-laugh-beam');
+
+const defaultScore = -1;
+let scoreLimit = defaultScore;
+let winner = false;
+
 const player1 = {
 	score: 0,
 	button: document.querySelector('#btnPlayer1'),
@@ -16,25 +31,22 @@ const player2 = {
 	}
 };
 
-const selection = document.querySelector('#roundSelect');
-const scores = document.querySelector('#scores');
-const btnReset = document.querySelector('#btnResetScore');
-
-const mehEmoij = document.createElement('i');
-mehEmoij.classList.add('far', 'fa-meh-blank');
-const sadEmoij = document.createElement('i');
-sadEmoij.classList.add('far', 'fa-sad-tear');
-const happyEmoij = document.createElement('i');
-happyEmoij.classList.add('far', 'fa-laugh-beam');
-
-const defaultScore = -1;
-let scoreLimit = defaultScore;
-let winner = false;
-
 selection.addEventListener('change', (e) => {
 	console.log('change event on select, e:', e);
 	scoreLimit = parseInt(e.target.value);
 	disableButtons(false);
+});
+
+btnPlayer1.addEventListener('click', (e) => {
+	updateGame(player1, player2);
+});
+
+btnPlayer2.addEventListener('click', (e) => {
+	updateGame(player2, player1);
+});
+
+btnReset.addEventListener('click', () => {
+	resetGame();
 });
 
 const updateGame = (player, opponent) => {
@@ -54,23 +66,6 @@ const updateGame = (player, opponent) => {
 	}
 };
 
-btnPlayer1.addEventListener('click', (e) => {
-	updateGame(player1, player2);
-});
-
-btnPlayer2.addEventListener('click', (e) => {
-	updateGame(player2, player1);
-});
-
-btnReset.addEventListener('click', () => {
-	resetGame();
-});
-
-const disableButtons = function(state) {
-	player1.button.disabled = state;
-	player2.button.disabled = state;
-};
-
 const resetPlayer = (player) => {
 	player.display.innerText = 0;
 	player.display.classList.remove('winner', 'loser');
@@ -85,4 +80,9 @@ const resetGame = () => {
 	scoreLimit = defaultScore;
 	winner = false;
 	disableButtons(true);
+};
+
+const disableButtons = function(state) {
+	player1.button.disabled = state;
+	player2.button.disabled = state;
 };
