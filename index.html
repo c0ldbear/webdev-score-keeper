@@ -6,22 +6,45 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Score Keeper</title>
+
+        <style>
+            body {
+                background-color: #E0B1CB;
+            }
+
+            #container {
+                margin: 2.5em auto;
+                padding: 1.5em 2em;
+                width: 66%;
+                max-width: 500px;
+                background-color: #5E548E;
+                border-radius: 0.6em;
+                color: #ECEBE4;
+                box-shadow: 5px -12px #100d19;
+            }
+
+            #container h1 {
+                padding: 0;
+                margin: 0;
+            }
+        </style>
     </head>
 
     <body>
-        <h1>Score keeper!</h1>
-        <p>Keeping the score for ya!</p>
+        <div id="container">
+            <h1>Score keeper</h1>
+            <p>Keeping the score for ya!</p>
 
-        <div id="divScore">
-            <h2 id="scores">
-                <span id="scorePlayer1">0</span> to <span id="scorePlayer2">0</span>
-            </h2>
+            <div id="divScore">
+                <h2 id="scores">
+                    <span id="scorePlayer1">0</span> to <span id="scorePlayer2">0</span>
+                </h2>
+            </div>
+            <p>Use the buttons below to keep score.</p>
+            <button id="btnPlayer1">+1 to Player One</button>
+            <button id="btnPlayer2">+1 to Player Two</button>
+            <button id="btnResetScore">Reset</button>
         </div>
-        <p>Use the buttons below to keep score.</p>
-        <button id="btnPlayer1">+1 to Player One</button>
-        <button id="btnPlayer2">+1 to Player Two</button>
-        <button id="btnResetScore">Reset</button>
-
         <script src="app.js"></script>
     </body>
 
