@@ -1,3 +1,5 @@
+const selection = document.querySelector('#roundSelect');
+
 const btnPlayer1 = document.querySelector('#btnPlayer1');
 const btnPlayer2 = document.querySelector('#btnPlayer2');
 const scorePlayer1 = document.querySelector('#scorePlayer1');
@@ -9,13 +11,20 @@ const btnReset = document.querySelector('#btnResetScore');
 const player1 = { score: 0 };
 const player2 = { score: 0 };
 
+let scoreLimit = 5;
+
+selection.addEventListener('change', (e) => {
+	console.log('change event on select, e:', e);
+	scoreLimit = parseInt(e.target.value);
+});
+
 btnPlayer1.addEventListener('click', (e) => {
 	console.log('+1 score to Player 1');
 
 	player1.score++;
 	scorePlayer1.innerText = player1.score;
 
-	if (player1.score === 5) {
+	if (player1.score === scoreLimit) {
 		/* set the number of rounds instead of specific '5' in the if-statement */
 		scorePlayer1.style.color = '#1a936f';
 		scorePlayer2.style.color = '#931a3e';
@@ -28,7 +37,7 @@ btnPlayer2.addEventListener('click', (e) => {
 	player2.score++;
 	scorePlayer2.innerText = player2.score;
 
-	if (player2.score === 5) {
+	if (player2.score === scoreLimit) {
 		/* set the number of rounds instead of specific '5' in the if-statement */
 		scorePlayer2.style.color = '#1a936f';
 		scorePlayer1.style.color = '#931a3e';
@@ -42,4 +51,5 @@ btnReset.addEventListener('click', () => {
 	scorePlayer2.style.color = '';
 	scorePlayer2.innerText = 0;
 	player2.score = 0;
+	selection.value = 0;
 });
