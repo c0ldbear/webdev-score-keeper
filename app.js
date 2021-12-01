@@ -29,8 +29,10 @@ btnPlayer1.addEventListener('click', (e) => {
 
 	if (player1.score === scoreLimit) {
 		console.log('Player 1 have won!');
-		scorePlayer1.style.color = '#1a936f';
-		scorePlayer2.style.color = '#931a3e';
+		scorePlayer1.classList.add('winner');
+		// scorePlayer1.classList.add('has-text-weight-semibold');
+		scorePlayer2.classList.add('loser');
+		// scorePlayer1.classList.add('has-text-weight-light');
 		winner = true;
 	}
 });
@@ -44,19 +46,21 @@ btnPlayer2.addEventListener('click', (e) => {
 
 	if (player2.score === scoreLimit) {
 		console.log('Player 2 have won!');
-		scorePlayer2.style.color = '#1a936f';
-		scorePlayer1.style.color = '#931a3e';
+		scorePlayer2.classList.add('winner');
+		scorePlayer1.classList.add('loser');
 		winner = true;
 	}
 });
 
 btnReset.addEventListener('click', () => {
-	scorePlayer1.style.color = '';
+	// scorePlayer1.style.color = '';
 	scorePlayer1.innerText = 0;
+	scorePlayer1.classList.remove('winner', 'loser');
 	player1.score = 0;
 
-	scorePlayer2.style.color = '';
+	// scorePlayer2.style.color = '';
 	scorePlayer2.innerText = 0;
+	scorePlayer2.classList.remove('winner', 'loser');
 	player2.score = 0;
 
 	selection.value = 0;

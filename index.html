@@ -6,13 +6,23 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Score Keeper</title>
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
         <style>
             body {
                 background-color: #E0B1CB;
             }
 
-            #container {
+            .winner {
+                color: #1a936f;
+                font-weight: 600;
+            }
+
+            .loser {
+                color: #931a3e;
+                font-weight: 100;
+            }
+
+            #scoreContainer {
                 margin: 2.5em auto;
                 padding: 1.5em 2em;
                 width: 66%;
@@ -22,39 +32,42 @@
                 color: #ECEBE4;
                 box-shadow: 5px -12px #100d19;
             }
-
-            #container h1 {
-                padding: 0;
-                margin: 0;
-            }
         </style>
     </head>
 
     <body>
-        <div id="container">
-            <h1>Score keeper</h1>
-            <p>Keeping the score for ya!</p>
+        <section class="section">
+            <div class="container">
+                <div id="scoreContainer">
+                    <h1 class="is-size-1 is-capitalized m-0 p-0">Score keeper</h1>
+                    <p class="is-size-7">Keeping the score for ya!</p>
+                    <div class="block pt-5">
 
-            <div id="divScore">
-                <h2 id="scores">
-                    <span id="scorePlayer1">0</span> to <span id="scorePlayer2">0</span>
-                </h2>
+                        <div id="divScore" class="">
+                            <h2 class="is-size-2 has-text-centered is-family-monospace" id="scores">
+                                <span id="scorePlayer1">0</span> to <span id="scorePlayer2">0</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <p>Use the buttons below to keep score.</p>
+                        Select number of rounds:
+                        <select name="rounds" id="roundSelect">
+                            <option value="0" selected>-----</option>
+                            <option value="3">3 Rounds</option>
+                            <option value="5">5 Rounds</option>
+                            <option value="7">7 Rounds</option>
+                            <option value="9">9 Rounds</option>
+                        </select>
+                    </div>
+                    <div class="block">
+                        <button class="button is-small" id="btnPlayer1">+1 to Player One</button>
+                        <button class="button is-small" id="btnPlayer2">+1 to Player Two</button>
+                        <button class="button is-small" id="btnResetScore">Reset</button>
+                    </div>
+                </div>
             </div>
-            <p>Use the buttons below to keep score.</p>
-            <p>
-                Select number of rounds:
-                <select name="rounds" id="roundSelect">
-                    <option value="0" selected>-----</option>
-                    <option value="3">3 Rounds</option>
-                    <option value="5">5 Rounds</option>
-                    <option value="7">7 Rounds</option>
-                    <option value="9">9 Rounds</option>
-                </select>
-            </p>
-            <button id="btnPlayer1">+1 to Player One</button>
-            <button id="btnPlayer2">+1 to Player Two</button>
-            <button id="btnResetScore">Reset</button>
-        </div>
+        </section>
         <script src="app.js"></script>
     </body>
 
