@@ -4,6 +4,8 @@ const scorePlayer1 = document.querySelector('#scorePlayer1');
 const scorePlayer2 = document.querySelector('#scorePlayer2');
 const scores = document.querySelector('#scores');
 
+const btnReset = document.querySelector('#btnResetScore');
+
 const player1 = { score: 0 };
 const player2 = { score: 0 };
 
@@ -31,4 +33,13 @@ btnPlayer2.addEventListener('click', (e) => {
 		scorePlayer2.style.color = '#1a936f';
 		scorePlayer1.style.color = '#931a3e';
 	}
+});
+
+btnReset.addEventListener('click', () => {
+	scorePlayer1.style.color = '';
+	scorePlayer1.innerText = 0;
+	player1.score = 0;
+	scorePlayer2.style.color = '';
+	scorePlayer2.innerText = 0;
+	player2.score = 0;
 });
