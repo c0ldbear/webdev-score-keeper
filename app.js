@@ -1,7 +1,19 @@
+const player1 = {
+	score: 0,
+	button: document.querySelector('#btnPlayer1'),
+	display: document.querySelector('#scorePlayer1')
+};
+
+const player2 = {
+	score: 0,
+	button: document.querySelector('#btnPlayer2'),
+	display: document.querySelector('#scorePlayer2')
+};
+
 const selection = document.querySelector('#roundSelect');
 
-const btnPlayer1 = document.querySelector('#btnPlayer1');
-const btnPlayer2 = document.querySelector('#btnPlayer2');
+// const btnPlayer1 = document.querySelector('#btnPlayer1');
+// const btnPlayer2 = document.querySelector('#btnPlayer2');
 const scorePlayer1 = document.querySelector('#scorePlayer1');
 const scorePlayer2 = document.querySelector('#scorePlayer2');
 const scores = document.querySelector('#scores');
@@ -15,8 +27,8 @@ sadEmoij.classList.add('far', 'fa-sad-tear');
 const happyEmoij = document.createElement('i');
 happyEmoij.classList.add('far', 'fa-laugh-beam');
 
-const player1 = { score: 0 };
-const player2 = { score: 0 };
+// const player1 = { score: 0 };
+// const player2 = { score: 0 };
 
 const defaultScore = -1;
 let scoreLimit = defaultScore;
@@ -69,23 +81,40 @@ btnPlayer2.addEventListener('click', (e) => {
 });
 
 btnReset.addEventListener('click', () => {
-	// scorePlayer1.style.color = '';
-	scorePlayer1.innerText = 0;
-	scorePlayer1.classList.remove('winner', 'loser');
-	player1.score = 0;
+	resetGame();
+	// // scorePlayer1.style.color = '';
+	// scorePlayer1.innerText = 0;
+	// scorePlayer1.classList.remove('winner', 'loser');
+	// player1.score = 0;
 
-	// scorePlayer2.style.color = '';
-	scorePlayer2.innerText = 0;
-	scorePlayer2.classList.remove('winner', 'loser');
-	player2.score = 0;
+	// // scorePlayer2.style.color = '';
+	// scorePlayer2.innerText = 0;
+	// scorePlayer2.classList.remove('winner', 'loser');
+	// player2.score = 0;
+
+	// selection.value = 0;
+	// scorelimit = defaultscore;
+	// winner = false;
+	// disablebuttons(true);
+});
+
+const disableButtons = function(state) {
+	player1.button.disabled = state;
+	player2.button.disabled = state;
+};
+
+const resetPlayer = (player) => {
+	player.display.innerText = 0;
+	player.display.classList.remove('winner', 'loser');
+	player.score = 0;
+};
+
+const resetGame = () => {
+	resetPlayer(player1);
+	resetPlayer(player2);
 
 	selection.value = 0;
 	scoreLimit = defaultScore;
 	winner = false;
 	disableButtons(true);
-});
-
-const disableButtons = function(state) {
-	btnPlayer1.disabled = state;
-	btnPlayer2.disabled = state;
 };

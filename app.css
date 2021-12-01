@@ -5,13 +5,11 @@ body {
 .winner {
 	color: #1a936f;
 	font-weight: 600;
-	transition: all ease-in-out 0.2s;
 }
 
 .loser {
 	color: #931a3e;
 	font-weight: 100;
-	transition: all ease-in-out 0.2s;
 }
 
 #scoreContainer {
