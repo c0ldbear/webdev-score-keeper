@@ -8,6 +8,13 @@ const scores = document.querySelector('#scores');
 
 const btnReset = document.querySelector('#btnResetScore');
 
+const mehEmoij = document.createElement('i');
+mehEmoij.classList.add('far', 'fa-meh-blank');
+const sadEmoij = document.createElement('i');
+sadEmoij.classList.add('far', 'fa-sad-tear');
+const happyEmoij = document.createElement('i');
+happyEmoij.classList.add('far', 'fa-laugh-beam');
+
 const player1 = { score: 0 };
 const player2 = { score: 0 };
 
@@ -28,11 +35,14 @@ btnPlayer1.addEventListener('click', (e) => {
 		scorePlayer1.innerText = player1.score;
 	}
 
+	/* Player 1 wins (check) */
 	if (player1.score === scoreLimit) {
 		console.log('Player 1 have won!');
 		scorePlayer1.classList.add('winner');
+		scorePlayer1.prepend(happyEmoij, ' ');
 		// scorePlayer1.classList.add('has-text-weight-semibold');
 		scorePlayer2.classList.add('loser');
+		scorePlayer2.append(' ', sadEmoij);
 		// scorePlayer1.classList.add('has-text-weight-light');
 		winner = true;
 		disableButtons(true);
@@ -46,10 +56,13 @@ btnPlayer2.addEventListener('click', (e) => {
 		scorePlayer2.innerText = player2.score;
 	}
 
+	/* Player 2 wins (check) */
 	if (player2.score === scoreLimit) {
 		console.log('Player 2 have won!');
 		scorePlayer2.classList.add('winner');
+		scorePlayer2.append(' ', happyEmoij);
 		scorePlayer1.classList.add('loser');
+		scorePlayer1.prepend(sadEmoij, ' ');
 		winner = true;
 		disableButtons(true);
 	}
