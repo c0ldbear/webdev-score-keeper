@@ -18,6 +18,7 @@ let winner = false;
 selection.addEventListener('change', (e) => {
 	console.log('change event on select, e:', e);
 	scoreLimit = parseInt(e.target.value);
+	disableButtons(false);
 });
 
 btnPlayer1.addEventListener('click', (e) => {
@@ -34,6 +35,7 @@ btnPlayer1.addEventListener('click', (e) => {
 		scorePlayer2.classList.add('loser');
 		// scorePlayer1.classList.add('has-text-weight-light');
 		winner = true;
+		disableButtons(true);
 	}
 });
 
@@ -49,6 +51,7 @@ btnPlayer2.addEventListener('click', (e) => {
 		scorePlayer2.classList.add('winner');
 		scorePlayer1.classList.add('loser');
 		winner = true;
+		disableButtons(true);
 	}
 });
 
@@ -67,3 +70,8 @@ btnReset.addEventListener('click', () => {
 	scoreLimit = defaultScore;
 	winner = false;
 });
+
+const disableButtons = function(state) {
+	btnPlayer1.disabled = state;
+	btnPlayer2.disabled = state;
+};
